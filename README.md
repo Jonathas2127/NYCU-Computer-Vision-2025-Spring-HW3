@@ -28,7 +28,6 @@ import shutil
 
 from kaggle_secrets import UserSecretsClient
 
-
 os.makedirs('/root/.kaggle', exist_ok=True)
 
 user_secrets = UserSecretsClient()
@@ -36,7 +35,9 @@ user_secrets = UserSecretsClient()
 kaggle_json = user_secrets.get_secret("kaggle_json")
 
 with open('/root/.kaggle/kaggle.json', 'w') as f:
+
     f.write(kaggle_json)
+    
 os.chmod('/root/.kaggle/kaggle.json', 0o600)
 
 dataset_dir = '/kaggle/working/dataset'
