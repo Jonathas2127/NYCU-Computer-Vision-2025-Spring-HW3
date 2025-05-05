@@ -10,15 +10,15 @@ This project implements an instance segmentation pipeline for microscopic cell i
 I run train.py on Kaggle Notebooks.
 Upload datasets to Kaggle first and open a new notebook.
 
-# First cell:
+### First cell:
 
 !pip install imagecodecs --quiet
 
-# Second cell:
+### Second cell:
 
 train.py
 
-# Third cell (add secrets with API):
+### Third cell (add secrets with API):
 
 import os
 import json
