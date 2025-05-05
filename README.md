@@ -17,13 +17,11 @@ Second cell:
 train.py
 
 Third cell (add secrets with API):
-# Save model to Kaggle Dataset
 import os
 import json
 import shutil
 from kaggle_secrets import UserSecretsClient
 
-# Setup Kaggle credentials
 os.makedirs('/root/.kaggle', exist_ok=True)
 user_secrets = UserSecretsClient()
 kaggle_json = user_secrets.get_secret("kaggle_json")
@@ -32,12 +30,10 @@ with open('/root/.kaggle/kaggle.json', 'w') as f:
     f.write(kaggle_json)
 os.chmod('/root/.kaggle/kaggle.json', 0o600)
 
-# Organize output files
 dataset_dir = '/kaggle/working/dataset'
 os.makedirs(dataset_dir, exist_ok=True)
 shutil.move('/kaggle/working/model_final.pth', dataset_dir)
 
-# Metadata
 dataset_metadata = {
     "title": "digit-recognition-output",
     "id": "Kaggle-user-name/model-path-output",  # Replace with your Kaggle account
@@ -47,9 +43,12 @@ dataset_metadata = {
 with open(f"{dataset_dir}/dataset-metadata.json", "w") as f:
     json.dump(dataset_metadata, f)
 
-# Install Kaggle CLI and upload
 !pip install kaggle --quiet
 !kaggle datasets create -p {dataset_dir} --dir-mode zip
+
+Run all cells and the model path would be automatically saved in dataset.
+
+Then, I run inference.py on PC with the model path downloading from the training section on Kaggle.
 
 ## Performance snapshot
 [Snapshot on leaderboard](https://imgur.com/92zKP24)
