@@ -21,7 +21,6 @@ train.py
 ### Third cell (add secrets with API):
 
 import os
-
 import json
 
 import shutil
