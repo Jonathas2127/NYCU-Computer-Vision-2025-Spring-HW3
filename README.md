@@ -12,7 +12,7 @@ Upload datasets to Kaggle first and open a new notebook.
 
 ### First cell:
 
-!pip install imagecodecs --quiet
+    !pip install imagecodecs --quiet
 
 ### Second cell:
 
@@ -20,41 +20,41 @@ train.py
 
 ### Third cell (add secrets with API):
 
-import os
-
-import json
-
-import shutil
-
-from kaggle_secrets import UserSecretsClient
-
-os.makedirs('/root/.kaggle', exist_ok=True)
-
-user_secrets = UserSecretsClient()
-
-kaggle_json = user_secrets.get_secret("kaggle_json")
-
-with open('/root/.kaggle/kaggle.json', 'w') as f:
-
-    f.write(kaggle_json)
+    import os
     
-os.chmod('/root/.kaggle/kaggle.json', 0o600)
-
-dataset_dir = '/kaggle/working/dataset'
-os.makedirs(dataset_dir, exist_ok=True)
-shutil.move('/kaggle/working/model_final.pth', dataset_dir)
-
-dataset_metadata = {
-    "title": "digit-recognition-output",
-    "id": "Kaggle-user-name/model-path-output",  # Replace with your Kaggle account
-    "licenses": [{"name": "CC0-1.0"}]
-}
-
-with open(f"{dataset_dir}/dataset-metadata.json", "w") as f:
-    json.dump(dataset_metadata, f)
-
-!pip install kaggle --quiet
-!kaggle datasets create -p {dataset_dir} --dir-mode zip
+    import json
+    
+    import shutil
+    
+    from kaggle_secrets import UserSecretsClient
+    
+    os.makedirs('/root/.kaggle', exist_ok=True)
+    
+    user_secrets = UserSecretsClient()
+    
+    kaggle_json = user_secrets.get_secret("kaggle_json")
+    
+    with open('/root/.kaggle/kaggle.json', 'w') as f:
+    
+        f.write(kaggle_json)
+        
+    os.chmod('/root/.kaggle/kaggle.json', 0o600)
+    
+    dataset_dir = '/kaggle/working/dataset'
+    os.makedirs(dataset_dir, exist_ok=True)
+    shutil.move('/kaggle/working/model_final.pth', dataset_dir)
+    
+    dataset_metadata = {
+        "title": "digit-recognition-output",
+        "id": "Kaggle-user-name/model-path-output",  # Replace with your Kaggle account
+        "licenses": [{"name": "CC0-1.0"}]
+    }
+    
+    with open(f"{dataset_dir}/dataset-metadata.json", "w") as f:
+        json.dump(dataset_metadata, f)
+    
+    !pip install kaggle --quiet
+    !kaggle datasets create -p {dataset_dir} --dir-mode zip
 
 Run all cells and the model path would be automatically saved in dataset.
 
