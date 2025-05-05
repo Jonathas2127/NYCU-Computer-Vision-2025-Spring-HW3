@@ -51,4 +51,4 @@ Run all cells and the model path would be automatically saved in dataset.
 Then, I run inference.py on PC with the model path downloading from the training section on Kaggle.
 
 ## Performance snapshot
-[Snapshot on leaderboard](https://imgur.com/92zKP24)
+[Snapshot on leaderboard](https://imgur.com/a/urPmtsm)
