@@ -4,7 +4,7 @@ student ID: 111550169
 Name: 陳宣澔
 
 ## Introduction
-This project implements an instance segmentation pipeline for microscopic cell images using Mask R-CNN. The model is built on top of PyTorch's torchvision library and uses a ResNet-50 FPN backbone to detect and segment individual cell instances across four classes. The input images and ground-truth masks are preprocessed with Albumentations, and training is conducted over 50 epochs with a focus on optimizing segmentation quality and generalization. Optional extensions include center and boundary map supervision for enhanced spatial understanding.
+This project implements an instance segmentation model using Mask R-CNN with a ResNet-50 + FPN backbone to detect and segment cell instances from microscopy images. The goal is to accurately identify multiple object classes and their masks in biomedical images. I leverage pre-trained weights from torchvision to accelerate convergence and improve generalization. The training pipeline includes robust data augmentation, proper target formatting, and support for optional auxiliary supervision (e.g., center and boundary maps). The best-performing model achieves significant improvements in accuracy by switching from the ResNet-50 v2 to the v1 backbone.
 
 ## How to install
 I run train.py on Kaggle Notebooks.
@@ -21,23 +21,16 @@ train.py
 ### Third cell (add secrets with API):
 
     import os
-    
     import json
-    
     import shutil
-    
     from kaggle_secrets import UserSecretsClient
     
     os.makedirs('/root/.kaggle', exist_ok=True)
-    
     user_secrets = UserSecretsClient()
-    
     kaggle_json = user_secrets.get_secret("kaggle_json")
     
     with open('/root/.kaggle/kaggle.json', 'w') as f:
-    
         f.write(kaggle_json)
-        
     os.chmod('/root/.kaggle/kaggle.json', 0o600)
     
     dataset_dir = '/kaggle/working/dataset'
