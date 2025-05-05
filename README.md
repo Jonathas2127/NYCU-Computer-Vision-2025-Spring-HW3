@@ -4,7 +4,7 @@ student ID: 111550169
 Name: 陳宣澔
 
 ## Introduction
-This project implements an instance segmentation model using Mask R-CNN with a ResNet-50 + FPN backbone to detect and segment cell instances from microscopy images. The goal is to accurately identify multiple object classes and their masks in biomedical images. I leverage pre-trained weights from torchvision to accelerate convergence and improve generalization. The training pipeline includes robust data augmentation, proper target formatting, and support for optional auxiliary supervision (e.g., center and boundary maps). The best-performing model achieves significant improvements in accuracy by switching from the ResNet-50 v2 to the v1 backbone.
+This project implements an instance segmentation model using Mask R-CNN with a ResNet-50 + FPN backbone to detect and segment cell instances from microscopy images. The goal is to accurately identify multiple object classes and their masks in biomedical images. I leverage pre-trained weights from torchvision to accelerate convergence and improve generalization. Training uses basic normalization and runs on standard PyTorch pipelines.
 
 ## How to install
 I run train.py on Kaggle Notebooks.
